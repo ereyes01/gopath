@@ -2,11 +2,11 @@
 
 gopath()
 {
-    GOPATH=$(readlink -m $1)
+    dir=$(readlink -m $1)
 
-    [[ -d $GOPATH ]] || return 1
+    [[ -d "$dir" ]] || return 1
 
+    export GOPATH=$dir
     export PATH=$GOPATH/bin:$PATH
-    export GOPATH
     export GO15VENDOREXPERIMENT=1
 }
